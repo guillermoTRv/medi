@@ -94,7 +94,8 @@
         });
         var ultima_relacion = $(".lista_relacion .relacion:last div").attr("class")
         for(var i = 1; i <= ultima_relacion; i++ ){
-          alert(i)
+          var apartado_relacion = $("."+i+" div .apartado_relacion").val()
+          alert(apartado_relacion)
         }
   });
   $(document).on("click",".btn_referencia",function(){

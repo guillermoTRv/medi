@@ -10,7 +10,7 @@
 		</thead>
 		<tbody>
 			<?php
-				$consulta = mysqli_query($q_sec,"SELECT subapartado,id_subapartado,posicion FROM subapartados WHERE id_apartado = '$id_apartado'");
+				$consulta = mysqli_query($q_sec,"SELECT subapartado,id_subapartado,posicion FROM subapartados WHERE id_apartado = '$id_apartado'  order by posicion asc");
                 while ($array =  mysqli_fetch_array($consulta)) {
                     $subapartado   = $array["subapartado"];
                     $id_subapartado = $array["id_subapartado"];
@@ -29,7 +29,7 @@
                                     </a>
                             	</td>
                             	<td>
-                            		<input type="text" style="height:20px;width: 30px;text-align: center;" value="<?php echo $posicion ?>" >
+                            		<input type="text" style="height:20px;width: 30px;text-align: center;" value="<?php echo $posicion ?>" class="input_posicion" data="<?php echo $id_subapartado ?>">
                             	</td>
                             </tr>
                           <?php
@@ -164,4 +164,21 @@
         }
     });
   })
+  $(document).on('change','.input_posicion',function(){
+    var id_subapartado = $(this).attr("data")
+    var valor_posicion = $(this).val()
+    $.ajax({
+        type:"GET",
+        url:"panel/process_posicion_subapartados.php?id_subapartado="+id_subapartado+"&posicion="+valor_posicion+"",
+        success:function(data){
+
+        }
+    });
+    return false;
+  })/*
+  $(document).ready(function(){
+      $("input").change(function(){
+          alert("The text has been changed.");
+      });
+  });*/
 </script>

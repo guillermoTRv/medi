@@ -13,9 +13,9 @@
 					<a href="" style="color:black" class="quitar_relacion"><i class="fa fa-times-circle-o"></i></a>
 					<?php echo $apartado = consulta_txt("SELECT apartado FROM apartados WHERE id_apartado = '$id_apartado'","apartado"); ?>
 					<div style="display: none">
-						<input type="text" value='<?php echo $categoria ?>' name="categoria">
-						<input type="text" value='<?php echo $id_apartado ?>' name="relacion_apartado">
-						<input type="text" value='<?php echo $id_subapartado ?>' name="relacion_subapartado">
+						<input type="text" value='<?php echo $categoria ?>' class="categoria_relacion" name="categoria">
+						<input type="text" value='<?php echo $id_apartado ?>' class="apartado_relacion" name="relacion_apartado">
+						<input type="text" value='<?php echo $id_subapartado ?>' class="subapartado_relacion" name="relacion_subapartado">
 					</div>
 					<br>
 				</div>

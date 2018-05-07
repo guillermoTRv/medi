@@ -1,6 +1,6 @@
 <div class="list-group" style="text-align: center">
                       <?php 
-                        $consulta = mysqli_query($q_sec,"SELECT * FROM subapartados WHERE id_apartado = '$id_apartado'");
+                        $consulta = mysqli_query($q_sec,"SELECT * FROM subapartados WHERE id_apartado = '$id_apartado' order by posicion asc");
                         while ($array =  mysqli_fetch_array($consulta)) {
                           $sub_apartado   = $array["subapartado"];
                           $id_subapartado = $array["id_subapartado"];
@@ -10,8 +10,8 @@
                           <?php
                         }
                       ?>
-                      <a href="<?php echo $ruta_subapartado ?>" class="list-group-item" style="padding: 5px">Sin Clasificar</a>
-                      <a href="<?php echo $ruta_subapartado ?>" class="list-group-item" style="padding: 5px">En general</a>
+                      <!--<a href="<?php echo $ruta_subapartado ?>" class="list-group-item" style="padding: 5px">Sin Clasificar</a>
+                      <a href="<?php echo $ruta_subapartado ?>" class="list-group-item" style="padding: 5px">En general</a>-->
                     </div>
                     <?php $ruta_mas = "panel.php?modulo=$getvar&apartado=$id_apartado" ?>
                     <center>
