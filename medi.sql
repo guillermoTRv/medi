@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 07-05-2018 a las 22:12:24
+-- Tiempo de generación: 08-05-2018 a las 15:44:45
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `apartados` (
 
 INSERT INTO `apartados` (`id_apartado`, `id_modulo`, `apartado`, `posicion`) VALUES
 (1, 1, 'MÃ©dula Espinal', 0),
-(2, 1, 'Neuronas y Glia', 0);
+(2, 1, 'ClÃ­nica en General', 0);
 
 -- --------------------------------------------------------
 
@@ -58,7 +58,16 @@ CREATE TABLE IF NOT EXISTS `ap_clinica` (
   `ap_clinica` varchar(140) NOT NULL,
   `posicion` int(11) NOT NULL,
   PRIMARY KEY (`id_ap_clinica`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ap_clinica`
+--
+
+INSERT INTO `ap_clinica` (`id_ap_clinica`, `id_modulo`, `ap_clinica`, `posicion`) VALUES
+(1, 1, 'ClÃ­nica en General', 0),
+(4, 2, 'ClÃ­nica en General', 1),
+(5, 2, 'Meningitis', 2);
 
 -- --------------------------------------------------------
 
@@ -84,18 +93,23 @@ CREATE TABLE IF NOT EXISTS `ap_farma` (
 DROP TABLE IF EXISTS `articulos`;
 CREATE TABLE IF NOT EXISTS `articulos` (
   `id_articulo` int(11) NOT NULL AUTO_INCREMENT,
-  `categoria` varchar(15) NOT NULL,
-  `id_modulo` int(11) NOT NULL,
-  `id_apartado` int(11) NOT NULL,
-  `id_subapartado` int(11) DEFAULT NULL,
   `titulo` varchar(140) NOT NULL,
-  `institucion` varchar(140) NOT NULL,
-  `fecha` char(4) NOT NULL,
+  `institucion` varchar(200) NOT NULL,
+  `publicadora` varchar(200) NOT NULL,
+  `autores` varchar(200) NOT NULL,
+  `fecha` varchar(30) NOT NULL,
   `pais` varchar(140) NOT NULL,
-  `link` varchar(140) DEFAULT NULL,
   `comentario` varchar(500) DEFAULT NULL,
+  `link` varchar(140) DEFAULT NULL,
   PRIMARY KEY (`id_articulo`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `articulos`
+--
+
+INSERT INTO `articulos` (`id_articulo`, `titulo`, `institucion`, `publicadora`, `autores`, `fecha`, `pais`, `comentario`, `link`) VALUES
+(1, 'g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8');
 
 -- --------------------------------------------------------
 
@@ -135,6 +149,23 @@ INSERT INTO `modulos` (`id_modulo`, `modulo`, `estudio`, `tipo`, `getvar`, `posi
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `relacion_articulos`
+--
+
+DROP TABLE IF EXISTS `relacion_articulos`;
+CREATE TABLE IF NOT EXISTS `relacion_articulos` (
+  `id_relacion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_articulo` int(11) NOT NULL,
+  `categoria` varchar(15) NOT NULL,
+  `id_modulo` int(11) NOT NULL,
+  `id_apartado` int(11) NOT NULL,
+  `id_subapartado` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_relacion`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `subapartados`
 --
 
@@ -148,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `subapartados` (
   `temporal` longtext NOT NULL,
   `posicion` int(11) NOT NULL,
   PRIMARY KEY (`id_subapartado`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `subapartados`
@@ -161,7 +192,8 @@ INSERT INTO `subapartados` (`id_subapartado`, `id_apartado`, `subapartado`, `rec
 (5, 1, 'Estructuras de ProtecciÃ³n - Meninges', '<h3>Cavidad Epidural&nbsp;</h3><p>*Grasa y tejido conectivo&nbsp;</p><h3>Duramadre</h3><p>*Gruesa y dura&nbsp;<br />*Tejido conectivo denso irregular&nbsp;<br />*<strong>Continuidad:&nbsp;</strong>Agujero Magno del hueso occipital - S2.&nbsp;<br /><strong>*Continuidad:&nbsp;</strong>Con el epineuro</p><h3>Espacio Subdural</h3><p>*liquido intersticial</p><h3>Aracnoides</h3><p>*Delgada y avascular&nbsp;<br />*Delgadas fibras colagenas laxas y fibras elasticas</p><h3>Espacio Subaracnoideo</h3><p>*Contiene LCF</p><h3>Piamadre&nbsp;</h3><p>*Fina y transparente<br />*Celulas pavimentosas cuboides<br />*Vascularizada</p><h3>Liamentos Dentados</h3><p>*Engrosamientos de la piamadre<br />*Entre raices anteriores y posteriores<br />*Medios de fijacion</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>', '', '<p><span class=\"marker\">Idea de Material: Hacer un cuadro comparativo de las diferentes capas de las meninges. Celulas, tipo de proteinas, caracteristicas estructurales. Extension. Vascularizacion. etc</span></p>', 4),
 (6, 1, 'Aspectos AnatÃ³micos Particulares', '<p><br /><strong>Intumescencia Cervical</strong></p><p>*C4 - T1 -&gt;&nbsp;</p><p><strong>Intumescencia Lumar&nbsp;</strong></p><p>*T9 - T12&nbsp;-&gt;</p><p><strong>Cono medular&nbsp;</strong></p><p>*Termina en L1/L2</p><p><strong>Filum Terminale</strong></p><p><strong>*</strong>Prolongacion de la piamadre - Extension ??&nbsp;<br />*Se fija al coxis&nbsp;</p><p><strong>Cola de Caballo</strong></p><p>&nbsp;</p>', '', '', 2),
 (7, 1, 'Nervios y RaÃ­ces', '<p><br />*Raices: Unen cada nervio con un segmento medular.&nbsp;<br />*Raicillas&nbsp;<br />*Raiz Posterior<br />*Ganglio de la raiz posterior<br />*Raiz Ventral</p><p><strong>Nivel medular y nivel de salida de los nervios&nbsp;</strong></p><p>&nbsp;</p>', '', '', 6),
-(8, 1, 'DivisiÃ³n SegmentarÃ­a de la MÃ©dula Espinal', '<p><br />*Cada par emerge a intervalos regulares&nbsp;de un segmento espinal a traves de los foramenes intervertrebales&nbsp;<br />&nbsp;</p><p><strong>Division General</strong></p><p>*8.S Cervicales&nbsp; &nbsp; &nbsp; &nbsp; 12.S Toracicos&nbsp; &nbsp; &nbsp; &nbsp;5.S Lumbares<br />&nbsp;5.S Sacros&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.S&nbsp; Coccigeo</p>', '', '', 5);
+(8, 1, 'DivisiÃ³n SegmentarÃ­a de la MÃ©dula Espinal', '<p><br />*Cada par emerge a intervalos regulares&nbsp;de un segmento espinal a traves de los foramenes intervertrebales&nbsp;<br />&nbsp;</p><p><strong>Division General</strong></p><p>*8.S Cervicales&nbsp; &nbsp; &nbsp; &nbsp; 12.S Toracicos&nbsp; &nbsp; &nbsp; &nbsp;5.S Lumbares<br />&nbsp;5.S Sacros&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.S&nbsp; Coccigeo</p>', '', '', 5),
+(9, 2, 'Neuronas', '<p>Articulo so</p>', '', '<p>Articulo sobre remielinizacion&nbsp;<br />http://www.elsevier.es/es-revista-neurologia-295-articulo-vitamina-d-remielinizacion-esclerosis-multiple-S0213485316300652</p>', 0);
 
 -- --------------------------------------------------------
 

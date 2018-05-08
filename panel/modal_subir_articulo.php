@@ -7,6 +7,7 @@
       </div>
       <div class="modal-body">
         <form method="post" id="form_articulo" enctype="multipart/form-data">
+          <input type="text" class="relaciones" name="relaciones">
           <input type="text" name="titulo" class="form-control input-sm" placeholder="Titulo" style="margin-bottom:5px">
 
           <input type="text" name="institucion" class="form-control input-sm" placeholder="Institucion" style="margin-bottom:5px">
@@ -81,6 +82,8 @@
   $(document).on("click",".btn_subir_articulo",function(){
         var formData = new FormData($("#form_articulo")[0]);
         var ruta = "panel/process_subir_articulo.php";
+        var relaciones = $(".relacion").length
+        $(".relaciones").val(relaciones)
         $.ajax({
             url: ruta,
             type: "POST",
@@ -89,13 +92,21 @@
             processData: false,
             success: function(datos)
             {
+                if (data != 'mens_uno') {}
                 $(".mensaje_articulo").html(datos);
             }
         });
-        var ultima_relacion = $(".lista_relacion .relacion:last div").attr("class")
+        var ultima_relacion = $(".lista_relacion .relacion:last form").attr("class")
         for(var i = 1; i <= ultima_relacion; i++ ){
-          var apartado_relacion = $("."+i+" div .apartado_relacion").val()
-          alert(apartado_relacion)
+          //var apartado_relacion = $("."+i+" div .apartado_relacion").val()
+          $.ajax({
+              type:"POST",
+              url:"panel/process_relacion_articulo.php",
+              data:$("."+i).serialize(),
+              success:function(data){
+                  alert(data)                 
+              }
+          });
         }
   });
   $(document).on("click",".btn_referencia",function(){
@@ -112,13 +123,13 @@
             var num_relacion = parseInt($(".relacion").length)
             if (num_relacion == 0) {
               $(".lista_relacion").append(data)  
-              $(".lista_relacion .relacion:last div").addClass("1")
+              $(".lista_relacion .relacion:last form").addClass("1")
             }else{
-              var class_anterior = parseInt($(".lista_relacion .relacion:last div").attr("class"))
+              var class_anterior = parseInt($(".lista_relacion .relacion:last form").attr("class"))
               var class_nueva_num = parseInt(class_anterior + 1)
               var class_nueva_txt = class_nueva_num.toString()
               $(".lista_relacion").append(data)  
-              $(".lista_relacion .relacion:last div").addClass(class_nueva_txt)
+              $(".lista_relacion .relacion:last form").addClass(class_nueva_txt)
             }
           }
     })  

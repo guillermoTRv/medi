@@ -1,9 +1,5 @@
 <?php 
 	include("../funciones.php");
-	//$categoria = sanitizar("categoria");
-	//$modulo    = sanitizar("modulo");
-	//$apartado  = sanitizar("apartado");
-	//$subapartado = sanitizar("subapartado");
 
 	$titulo = sanitizar("titulo");
 	$institucion = sanitizar("institucion");
@@ -14,32 +10,34 @@
 	$comentarios = sanitizar("comentarios");
 	$link = sanitizar("link");
 	$archivo = $_FILES["file"]['type'];
+	$relaciones = sanitizar("relaciones");
 
-	if ($titulo != '' and $institucion != '' and $publicadora != '' and $autores !='' and $fecha != '' and $pais != '' and $comentarios !='' and $link != '') {
+	if ($titulo != '' and $institucion != '' and $publicadora != '' and $autores !='' and $fecha != '' and $pais != '' and $comentarios !='' and $link != '' and $archivo != '' and $relaciones != 0) {
 		
-		if ($archivo != '') {
-			$consulta_val = consulta_val("SELECT null FROM articulos WHERE titulo = '$titulo'");
-			if ($consulta_val == 0) {
-				/**$consulta = consulta_gen("INSERT INTO articulos(categoria,id_modulo,id_apartado,id_subapartado,titulo,institucion,fecha,pais,link,comentario) values('$categoria','$modulo','$apartado','$subapartado','$titulo','$institucion','$fecha','$pais','$comentarios','$link')");
-					$resultado = @move_uploaded_file($_FILES['file']["tmp_name"], "../articulos/$titulo.pdf");
-					if ($resultado) {
-						echo "El articulo ha sido registrado exitosamente";
-					}
-					else{
-						echo "La fotografia no pudo subirse tendra que subirla aparte";
-					}
+		$consulta_val = consulta_val("SELECT null FROM articulos WHERE titulo = '$titulo'");
+		if ($consulta_val == 0) {
+			$consulta = consulta_gen("INSERT INTO articulos(titulo,institucion,publicadora,autores,fecha,pais,comentario,link) values('$titulo','$institucion','$publicadora','$autores','$fecha','$pais','$comentarios','$link')");
+				$resultado = @move_uploaded_file($_FILES['file']["tmp_name"], "../articulos/$titulo.pdf");
+				if ($resultado) {
+					
+					echo $id_articulo = consulta_txt("SELECT id_articulo FROM articulos WHERE $titulo = '$titulo'","id_articulo");
+
+				}
+				else{
+					echo "mens_tres";
+					//echo "La fotografia no pudo subirse tendra que subirla aparte";
+				}
 			}
-			else{
-				echo "El articulo ya ha sido registrado";
-			*/}
-		}
 		else{
-			echo "Suba un archivo o registre el link";
+			echo "mens_dos";
+			//echo "El articulo ya ha sido registrado anteriormente";
 		}
+		
 
 	}
 	else{
-		echo "No dejar campos vacios";
+		echo "mens_uno";
+		//echo "No dejar campos vacios";
 	}
 		
 	
