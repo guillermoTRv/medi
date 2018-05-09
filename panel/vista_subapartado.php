@@ -1,4 +1,5 @@
 <input type="hidden" value="<?php echo $get_id_subapartado ?>" class="id_subapartado_js">
+<input type="hidden"  value="<?php echo $get_id_apartado ?>" class="id_apartado_js">
 <div class="box-header with-border" style="padding-top:3px;padding-bottom:3px">
 	<a href="" class="recopilador_panel"><strong>Recopilador</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="" class="presentacion_panel"><strong>Presentacion</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -140,6 +141,7 @@
   $(document).on('click','.btn_ventana',function(){
     event.preventDefault();
     var id_subapartado_js = $(".id_subapartado_js").val()
+    var id_apartado_js    = $(".id_apartado_js").val()
     $(".caja_recopilador").hide()
     $(".caja_presentacion").hide()
     $(".caja_temporal").hide()
@@ -147,7 +149,7 @@
     $(".ventanas").show()
     var data_ventana = $(this).attr("data")
     if (data_ventana == "articulos") {
-      $(".ventanas").load("panel/ventena_articulos.php?id_subapartado_js="+id_subapartado_js+"")
+      $(".ventanas").load("panel/ventena_articulos.php?id_apartado="+id_apartado_js+"")
     }
     if (data_ventana == "imagenes") {
       $(".ventanas").load("panel/ventena_imagenes.php")

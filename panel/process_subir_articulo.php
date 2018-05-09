@@ -20,7 +20,7 @@
 				$resultado = @move_uploaded_file($_FILES['file']["tmp_name"], "../articulos/$titulo.pdf");
 				if ($resultado) {
 					
-					echo $id_articulo = consulta_txt("SELECT id_articulo FROM articulos WHERE $titulo = '$titulo'","id_articulo");
+					echo $id_articulo = consulta_txt("SELECT id_articulo FROM articulos WHERE titulo = '$titulo'","id_articulo");
 
 				}
 				else{
