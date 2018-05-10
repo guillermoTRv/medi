@@ -1,6 +1,6 @@
 <div class="panel panel-default">
                       <div class="panel-body">
-                        <p style="text-align: center;"><strong>System Search</strong></p>
+                        <p style="text-align: center;"><strong><?php echo $nombre_sistema ?></strong></p>
                           <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                               Anatofisiologia

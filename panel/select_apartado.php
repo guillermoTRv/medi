@@ -5,7 +5,7 @@
 
 	if ($categoria == "anatofisiologia") {	
 		?> <option value="">--</option> <?php
-		$consulta = mysqli_query($q_sec,"SELECT * FROM subapartados WHERE id_apartado = '$apartado'");
+		$consulta = mysqli_query($q_sec,"SELECT * FROM subapartados WHERE id_apartado = '$apartado' order by posicion asc");
 		while ($array = mysqli_fetch_array($consulta)) {
 			$subapartado    = $array["subapartado"];
 			$id_subapartado = $array["id_subapartado"];

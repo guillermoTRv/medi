@@ -10,7 +10,7 @@
 		</thead>
 		<tbody>
 			<?php
-				$consulta = mysqli_query($q_sec,"SELECT subapartado,id_subapartado,posicion FROM subapartados WHERE id_apartado = '$id_apartado'  order by posicion asc");
+				$consulta = mysqli_query($q_sec,"SELECT subapartado,id_subapartado,posicion FROM subapartados WHERE id_apartado = '$get_id_apartado'  order by posicion asc");
                 while ($array =  mysqli_fetch_array($consulta)) {
                     $subapartado   = $array["subapartado"];
                     $id_subapartado = $array["id_subapartado"];
@@ -92,7 +92,7 @@
       <div class="modal-body">
         <form method="POST" class="form_subir_subapartado">
           <input type="text" class="form-control input_subapartado" name="subapartado">
-          <input type="hidden" name="apartado" value="<?php echo $id_apartado ?>">
+          <input type="hidden" name="apartado" value="<?php echo $get_id_apartado ?>">
         </form>
         <div class="mensaje_subir"></div>
       </div>

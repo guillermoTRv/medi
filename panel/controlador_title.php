@@ -1,5 +1,5 @@
 <h3 class="box-title">
-	<?php echo $apartado_enc; ?>
+	<?php echo $enc_apartado; ?>
 	<?php  
 		if ($get_id_subapartado != '') {
 			echo " - ".$subapartado_enc;

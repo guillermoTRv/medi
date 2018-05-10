@@ -52,15 +52,17 @@
                           <th>Apartado</th>
                           <th>Acciones</th>
                           <th><center>Evaluacion</center></th>
+                          <th>Posicion</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php  
-                          $consulta = mysqli_query($q_sec,"SELECT id_apartado,apartado FROM apartados WHERE id_modulo = '$id_modulo_get'");
+                          $consulta = mysqli_query($q_sec,"SELECT id_apartado,apartado,posicion FROM apartados WHERE id_modulo = '$id_modulo_get' order by posicion asc");
                           while ($array = mysqli_fetch_array($consulta)) {
                             $id_apartado = $array["id_apartado"];
                             $apartado = $array["apartado"];
-                            $ruta = "panel.php?modulo=$getvar&apartado=$id_apartado"
+                            $ruta = "panel.php?modulo=$getvar&apartado=$id_apartado";
+                            $posicion = $array["posicion"];
                             ?> 
                               <tr style="padding-top:-10px">
                                 <td><a style="color:black" href="<?php echo $ruta ?>"><?php echo $apartado ?></a></td>
@@ -74,6 +76,9 @@
                                 </td>
                                 <td>
                                   <center><i class="fa fa-star-o"></i></center>
+                                </td>
+                                <td>
+                                  <input type="text" style="height:20px;width: 30px;text-align: center;" class="input_posicion" data="<?php echo $id_apartado ?>" value="<?php echo $posicion ?>">
                                 </td>
                               </tr> 
                             <?php
@@ -229,6 +234,17 @@
                 $(".btn_editar_apartado").prop( "disabled",false) 
                 window.location.href = ""       
             }
+      });
+      return false;
+    })
+    $(document).on('change','.input_posicion',function(){
+      var id_apartado = $(this).attr("data")
+      var valor_posicion = $(this).val()
+      $.ajax({
+          type:"GET",
+          url:"panel/process_posicion_apartados.php?id_apartado="+id_apartado+"&posicion="+valor_posicion+"",
+          success:function(data){
+          }
       });
       return false;
     })

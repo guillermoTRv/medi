@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 09-05-2018 a las 16:28:25
+-- Tiempo de generación: 10-05-2018 a las 16:21:33
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -35,16 +35,17 @@ CREATE TABLE IF NOT EXISTS `apartados` (
   `apartado` varchar(140) NOT NULL,
   `posicion` int(11) NOT NULL,
   PRIMARY KEY (`id_apartado`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `apartados`
 --
 
 INSERT INTO `apartados` (`id_apartado`, `id_modulo`, `apartado`, `posicion`) VALUES
-(1, 1, 'MÃ©dula Espinal', 0),
-(2, 1, 'ClÃ­nica en General', 0),
-(3, 12, 'Vocabulario - Cuerpo', 0);
+(1, 1, 'MÃ©dula Espinal', 2),
+(2, 1, 'ClÃ­nica en General', 1),
+(6, 3, 'Estomago', 2),
+(5, 3, 'Boca', 1);
 
 -- --------------------------------------------------------
 
@@ -59,16 +60,7 @@ CREATE TABLE IF NOT EXISTS `ap_clinica` (
   `ap_clinica` varchar(140) NOT NULL,
   `posicion` int(11) NOT NULL,
   PRIMARY KEY (`id_ap_clinica`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `ap_clinica`
---
-
-INSERT INTO `ap_clinica` (`id_ap_clinica`, `id_modulo`, `ap_clinica`, `posicion`) VALUES
-(1, 1, 'ClÃ­nica en General', 0),
-(4, 2, 'ClÃ­nica en General', 1),
-(5, 2, 'Meningitis', 2);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -188,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `subapartados` (
   `temporal` longtext NOT NULL,
   `posicion` int(11) NOT NULL,
   PRIMARY KEY (`id_subapartado`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `subapartados`
@@ -198,14 +190,16 @@ INSERT INTO `subapartados` (`id_subapartado`, `id_apartado`, `subapartado`, `rec
 (1, 1, 'Ficha General', '<h3><strong>Ubicacion:</strong></h3><p>snell * Canal vertebral 3/4 superiores<br />waxman * 2/3 superiores canal vertebral adultos<br />&nbsp;</p><h3><strong>Forma:</strong></h3><p>*Casi Cilindrica - Aplanamiento anteroporterior<br />&nbsp;</p><h3><strong>Dimensiones:</strong></h3><p>*42cm - 45cm. Diametro varia de longitud<br />*Alargamiento se detiene 4/5 a&ntilde;o</p><h3><strong>Limites:</strong></h3><p>Snell * Foramen magno del hueso occipital<br />*Adultos: &quot;&quot; - L1/L2<br />*Neonatos: &quot;&quot; - L3/L4</p><h3><strong>Medios de Fijacion:</strong></h3><h3><strong>Relaciones:</strong></h3><h3><strong>Medios de Proteccion:</strong></h3><p>&nbsp;</p>', '', '', 1),
 (3, 1, 'Funciones', '<p><br />*Respuestas Reflejas Rapidas&nbsp;<br />*Via de comunicacion Encefalo - Cuerpo<br />Snell * Cause de informacion Encefalo - Cuerpo<br />*100 millones de neuronas</p><p>&nbsp;</p>', '', '', 7),
 (4, 1, 'Estructuras de protecciÃ³n - Columna', '', '', '', 3),
-(5, 1, 'Estructuras de ProtecciÃ³n - Meninges', '<h3>Cavidad Epidural&nbsp;</h3><p>*Grasa y tejido conectivo&nbsp;</p><h3>Duramadre</h3><p>*Gruesa y dura&nbsp;<br />*Tejido conectivo denso irregular&nbsp;<br />*<strong>Continuidad:&nbsp;</strong>Agujero Magno del hueso occipital - S2.&nbsp;<br /><strong>*Continuidad:&nbsp;</strong>Con el epineuro</p><h3>Espacio Subdural</h3><p>*liquido intersticial</p><h3>Aracnoides</h3><p>*Delgada y avascular&nbsp;<br />*Delgadas fibras colagenas laxas y fibras elasticas</p><h3>Espacio Subaracnoideo</h3><p>*Contiene LCF</p><h3>Piamadre&nbsp;</h3><p>*Fina y transparente<br />*Celulas pavimentosas cuboides<br />*Vascularizada</p><h3>Liamentos Dentados</h3><p>*Engrosamientos de la piamadre<br />*Entre raices anteriores y posteriores<br />*Medios de fijacion</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>', '', '<p><span class=\"marker\">Idea de Material: Hacer un cuadro comparativo de las diferentes capas de las meninges. Celulas, tipo de proteinas, caracteristicas estructurales. Extension. Vascularizacion. etc</span></p>', 4),
+(5, 1, 'Estructuras de ProtecciÃ³n - Meninges', '<h3>Cavidad Epidural&nbsp;</h3><p>*Grasa y tejido conectivo&nbsp;</p><h3>Duramadre</h3><p>*Gruesa y dura&nbsp;<br />*Tejido conectivo denso irregular&nbsp;<br />*<strong>Continuidad:&nbsp;</strong>Agujero Magno del hueso occipital - S2.&nbsp;<br /><strong>*Continuidad:&nbsp;</strong>Con el epineuro</p><h3>Espacio Subdural</h3><p>*liquido intersticial</p><h3>Aracnoides</h3><p>*Delgada y avascular&nbsp;<br />*Delgadas fibras colagenas laxas y fibras elasticas</p><h3>Espacio Subaracnoideo</h3><p>*Contiene LCF</p><h3>Piamadre&nbsp;</h3><p>*Fina y transparente<br />*Celulas pavimentosas cuboides<br />*Vascularizada</p><h3>Liamentos Dentados</h3><p>*Engrosamientos de la piamadre<br />*Entre raices anteriores y posteriores<br />*Medio&nbsp;de fijacion</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>', '', '<p><span class=\"marker\">Idea de Material: Hacer un cuadro comparativo de las diferentes capas de las meninges. Celulas, tipo de proteinas, caracteristicas estructurales. Extension. Vascularizacion. etc</span></p>', 4),
 (6, 1, 'Aspectos AnatÃ³micos Particulares', '<p><br /><strong>Intumescencia Cervical</strong></p><p>*C4 - T1 -&gt; Plexo Braquial</p><p><strong>Intumescencia Lumar&nbsp;</strong></p><p>*T9 - T12&nbsp;-&gt; Plexo lumbosacro<br />wax * Se afina y forma el cono medular<br />wax * Las intumescencias presentan un alto numero de NMI</p><p><strong>Cono medular&nbsp;</strong></p><p>*Termina en L1/L2<br />Snell * Desciende de aqui el filum terminale</p><p><strong>Filum Terminale</strong></p><p><strong>*</strong>Prolongacion de la piamadre - Extension ??&nbsp;<br />*Se fija al coxis&nbsp;<br />Wax * Se adhiere al saco dural distal<br />Wax * Piamadre, fibras gliales, con frecuencia una vena</p><p><strong>Cola de Caballo</strong></p><p><strong>Fisura media anterior&nbsp;</strong></p><p>wax * Pliegue de pia y vasos sanguineos</p><p><strong>Surco medio posterior</strong></p><p>&nbsp;</p>', '', '<p>Articulo donde encontre la imagen de la medula -&gt;&nbsp;http://www.elsevier.es/es-revista-revista-espanola-medicina-legal-285-articulo-autopsia-del-raquis-S0377473209700161</p><p><img src=\"http://www.elsevier.es/ficheros/publicaciones/03774732/0000003500000002/v1_201305061035/S0377473209700161/v1_201305061035/es/main.assets/gr5.jpeg\" style=\"width:500px\" /></p><p>&nbsp;</p><p>&nbsp;</p><img src = \"https://image.slidesharecdn.com/tomas-englermedula4704/95/tomas-englermedula-5-728.jpg?cb=1181201162\"><p><img src=\"http://userscontent2.emaze.com/images/d63b5223-9ed0-4b92-b14d-f635c2fbd656/Slide20_Pic1_636313400065688467.png\" /></p><p>&nbsp;</p>', 2),
 (7, 1, 'Nervios y RaÃ­ces', '<p><br />*Raices: Unen cada nervio con un segmento medular.&nbsp;<br />*Raicillas&nbsp;<br />*Raiz Posterior<br />*Ganglio de la raiz posterior<br />*Raiz Ventral</p><p><strong>Nivel medular y nivel de salida de los nervios&nbsp;</strong></p><p>&nbsp;</p>', '', '', 6),
-(8, 1, 'DivisiÃ³n SegmentarÃ­a de la MÃ©dula Espinal', '<p><br />*Cada par emerge a intervalos regulares&nbsp;de un segmento espinal a traves de los foramenes intervertrebales&nbsp;<br />&nbsp;</p><p><strong>Division General</strong></p><p>*8.S Cervicales&nbsp; &nbsp; &nbsp; &nbsp; 12.S Toracicos&nbsp; &nbsp; &nbsp; &nbsp;5.S Lumbares<br />&nbsp;5.S Sacros&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.S&nbsp; Coccigeo</p>', '', '', 5),
+(8, 1, 'DivisiÃ³n SegmentarÃ­a de la MÃ©dula Espinal', '<p><br />tort *Cada par emerge a intervalos regulares&nbsp;de un segmento espinal a traves de los foramenes intervertrebales&nbsp;<br />&nbsp;</p><p><strong>Division General</strong></p><p>tort *8.S Cervicales&nbsp; &nbsp; &nbsp; &nbsp; 12.S Toracicos&nbsp; &nbsp; &nbsp; &nbsp;5.S Lumbares<br />&nbsp; &nbsp; &nbsp; &nbsp; 5.S Sacros&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.S&nbsp; Coccigeo</p>', '', '', 5),
 (9, 2, 'Neuronas', '<p>Articulo so</p>', '', '<p>Articulo sobre remielinizacion&nbsp;<br />http://www.elsevier.es/es-revista-neurologia-295-articulo-vitamina-d-remielinizacion-esclerosis-multiple-S0213485316300652</p>', 0),
 (10, 1, 'Aspectos Clinicos', '<p>Waxman -&gt; pp 43</p><p>*Anancefalia -&gt; Incompatible con la vida</p><p><img src=\"https://embarazoactual.com/wp-content/uploads/2015/04/anencefalia.gif\" /></p><p><br />*Espina Bifida -&gt; Cierre caudal inadecuado del tubo neural</p><p><img src=\"https://columnavertebral.net/wp-content/uploads/2016/05/espina-bifida.jpg\" /></p><p>&nbsp;</p><p>* Meningocele y Mielomeningocele</p><p><img src=\"https://www.sciencephoto.com/image/778126/530wm/C0305733-Spina_Bifida%2C_Illustration-SPL.jpg\" /></p><p>&nbsp;</p>', '', '', 10),
 (11, 1, 'Funciones Motoras y reflejos medulares', '<p><strong>Organizacion de la medula espinal para las funciones motoras</strong></p><p>* Fibra sensitiva -&gt; Motoneruona<br />* Fibra sensitiva -&gt; Interneurona -&gt; Subir o bajar etc&nbsp;<br />* Muchas maneras de formar circuitos</p><p><strong>Motoneuronas anteriores&nbsp;</strong></p><p>&nbsp;</p><p>&nbsp;</p>', '', '', 9),
-(12, 3, 'Cuerpo', '', '', '', 0);
+(12, 3, 'Cuerpo', '', '', '', 0),
+(14, 5, 'SecreciÃ³n Salival', '<p><strong>Produccion</strong></p><p>*Glandulas Parotida, submandibular y sublingual.<br />*Produccion 1000 - 1500 ml/ dia&nbsp;</p><p><strong>Componentes</strong></p><p>*Amilasa - IgA - Lizosima - Mucinas<br />*Los componentes difieren seun la glandula</p><p><strong>Funciones&nbsp;</strong></p><p><strong>*</strong>Lubricar bolo alimentacion&nbsp;<br />*Neutralizar secreciones acidas que refluyan al esofago<br />*Facilita la deglucion<br />*Mantiene humeda y limpia la boca<br />*Solvente para las moleculas que estimulan papilas gustativas<br />*Ayuda al habla<br />*Accion Antimicrobiana<br /><span class=\"marker\">Xerostomia</span><br />&nbsp;</p><p><strong>Caracteristicas</strong></p><p><strong>*</strong>Hipotonica con respecto al plasma<br />*Alcalina</p><p><strong>Secrecion</strong></p><p>*Estimulo -&gt; Dilatacion vasos -&gt; Mayor produccion y secrecion -&gt; Reabsorcion Na/Cl Secrecion K/Bicarbonato&nbsp;<br />*Conductos -&gt; Impermeables&nbsp;</p><p>*Mayor control parasimpatico&nbsp;</p><p>&nbsp;</p><p><img src=\"http://localhost/medi/imagenes/controlsalival.png\" /></p>', '', '', 0),
+(15, 6, 'SecreciÃ³n GÃ¡strica', '<p>*Cardias y Region Pilorica -&gt; Secrecion de moco<br />*Cuerpo del estomago -&gt; Celulas parietales y celulas principales&nbsp;</p><p>*Celulas mucosas -&gt; Moco y HCO3<br />*Modelo o imagen glandular -&gt; Me pone en duda lo de arriba<br />*Fosa gastrica ??&nbsp;</p><p><strong>Origen y Regulacion de las secreciones gastricas</strong><br />&nbsp;</p>', '', '', 0);
 
 -- --------------------------------------------------------
 

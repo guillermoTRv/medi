@@ -1,10 +1,10 @@
 <div class="list-group" style="text-align: center">
                       <?php 
-                        $consulta = mysqli_query($q_sec,"SELECT * FROM subapartados WHERE id_apartado = '$id_apartado' order by posicion asc");
+                        $consulta = mysqli_query($q_sec,"SELECT * FROM subapartados WHERE id_apartado = '$get_id_apartado' order by posicion asc");
                         while ($array =  mysqli_fetch_array($consulta)) {
                           $sub_apartado   = $array["subapartado"];
                           $id_subapartado = $array["id_subapartado"];
-                          $ruta_subapartado = "panel.php?modulo=$getvar&apartado=$id_apartado&subapartado=$id_subapartado"
+                          $ruta_subapartado = "panel.php?modulo=$getvar&apartado=$get_id_apartado&subapartado=$id_subapartado"
                           ?>
                             <a href="<?php echo $ruta_subapartado ?>" class="list-group-item" style="padding: 5px"><?php echo $sub_apartado ?></a>
                           <?php
@@ -13,7 +13,7 @@
                       <!--<a href="<?php echo $ruta_subapartado ?>" class="list-group-item" style="padding: 5px">Sin Clasificar</a>
                       <a href="<?php echo $ruta_subapartado ?>" class="list-group-item" style="padding: 5px">En general</a>-->
                     </div>
-                    <?php $ruta_mas = "panel.php?modulo=$getvar&apartado=$id_apartado" ?>
+                    <?php $ruta_mas = "panel.php?modulo=$getvar&apartado=$get_id_apartado" ?>
                     <center>
                         <p>
                           <a style="color:black" href="<?php echo $ruta_mas ?>">Vista Principal</a>
@@ -31,12 +31,12 @@
                     </center>
                     <center>
                         <p>
-                          <a style="color:black" target="_blank" href="clinica.php?modulo=<?php echo $getvar ?>">Clinica del <?php echo $name_sistema ?></a>
+                          <a style="color:black" target="_blank" href="clinica.php?modulo=<?php echo $getvar ?>">Clinica del <?php echo $nombre_sistema ?></a>
                         </p>
                     </center>
                     <center>
                         <p>
-                          <a style="color:black" target="_blank" href="farmacologia.php?modulo=<?php echo $getvar ?>">Farmacologia del <?php echo $name_sistema ?></a>
+                          <a style="color:black" target="_blank" href="farmacologia.php?modulo=<?php echo $getvar ?>">Farmacologia del <?php echo $nombre_sistema ?></a>
                         </p>
                     </center>
                     <center>
@@ -44,10 +44,10 @@
                           <a style="color:black" href="<?php echo $ruta_mas ?>&act=edicion_subapartados">Edicion Subapartados</a>
                         </p>
                     </center>
-                    <br>
+                    <br><!--
                     <center><p>Realizar evaluacion</p></center><br>
                     <center><p>Notas(Biblio - General)</p></center><br>
-                    <center><p>Vitacora General</p></center><br>
+                    <center><p>Vitacora General</p></center><br>-->
                     <center>
                       <div class="dropup">
                         <button class="btn btn-default dropdown-toggle btn-block" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -56,7 +56,7 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                           <?php 
-                            $consulta = mysqli_query($q_sec,"SELECT * FROM apartados WHERE id_modulo = 1");
+                            $consulta = mysqli_query($q_sec,"SELECT * FROM apartados WHERE id_modulo = '$id_modulo' order by posicion asc");
                             while ($array =  mysqli_fetch_array($consulta)) {
                               $id_apartado_mod = $array["id_apartado"];
                               $apartado = $array["apartado"];

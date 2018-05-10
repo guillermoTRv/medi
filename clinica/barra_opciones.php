@@ -48,7 +48,7 @@
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <?php 
-                $consulta = mysqli_query($q_sec,"SELECT * FROM apartados WHERE id_modulo = 1");
+                $consulta = mysqli_query($q_sec,"SELECT * FROM apartados WHERE id_modulo = '$id_modulo_get' order by posicion asc");
                 while ($array =  mysqli_fetch_array($consulta)) {
                     $apartado = $array["apartado"];
                     ?>

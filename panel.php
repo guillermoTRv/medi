@@ -3,7 +3,6 @@
   include("funciones.php");
   $getvar = sanitizar_get("modulo");
   $get_id_apartado = sanitizar_get("apartado");
-
   $get_id_subapartado = sanitizar_get("subapartado");
   if ($get_id_subapartado != '') {
       $consulta = consulta_array("SELECT * FROM subapartados WHERE id_subapartado = '$get_id_subapartado'");
@@ -14,11 +13,10 @@
   }
 
   $id_modulo    = consulta_txt("SELECT id_modulo FROM modulos WHERE getvar = '$getvar'","id_modulo");
-  $name_sistema = consulta_txt("SELECT modulo FROM modulos WHERE getvar = '$getvar'","modulo");
+  $nombre_sistema = consulta_txt("SELECT modulo FROM modulos WHERE getvar = '$getvar'","modulo");
 
   $consulta = consulta_array("SELECT * FROM apartados WHERE id_modulo = '$id_modulo' and id_apartado = '$get_id_apartado'");
-  $apartado_enc = $consulta["apartado"];
-  $id_apartado  = $consulta["id_apartado"];
+  $enc_apartado = $consulta["apartado"];
 
   $get_act = sanitizar_get("act");
 
@@ -46,7 +44,12 @@
                     <h3 class="box-title">System Search</h3>
                   </div>-->
                   <div class="box-body">
-                    <?php include("componentes/system_search.php"); ?>
+                    <div class="panel panel-default">
+                      <div class="panel-body" style="padding-top:8px;padding-bottom:5px">
+                        <p style="text-align: center;font-size:1.1em"><strong><?php echo $nombre_sistema ?></strong></p>
+                      </div>
+                    </div>
+                    <?php //include("componentes/system_search.php"); ?>
                     <?php include("componentes/barra_opciones.php"); ?>
 
                   </div>
@@ -72,23 +75,6 @@
 <script src="bower_components/ckeditor/ckeditor.js"></script>
 <script>
 
-    /*$(document).on("click",".btn_subir_articulo",function(){
-            var formData = new FormData($(".form_articulo")[0]);
-            var ruta = "panel/process_subir_articulo.php";
-            $.ajax({
-                url: ruta,
-                type: "POST",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function(datos)
-                {
-                    $(".mensaje_articulo").html(datos);
-                }
-            });
-        });**/
-
-  //Notas clinicas, notas pediatrica, notas geriatricas, notas practicas etc
 </script>
 </body>
 </html>
