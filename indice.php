@@ -2,9 +2,10 @@
 <?php include("funciones.php") ?>
 <?php 
   $getvar     = sanitizar_get("modulo");
-  $consulta   = consulta_array("SELECT modulo,id_modulo FROM modulos WHERE getvar = '$getvar'");
+  $consulta   = consulta_array("SELECT modulo,id_modulo,estudio FROM modulos WHERE getvar = '$getvar'");
   $modulo_enc = $consulta['modulo'];
   $id_modulo_get = $consulta['id_modulo'];
+  $estudio = $consulta["estudio"];
 ?>
 <html>
 <head>
@@ -24,7 +25,7 @@
         <div class="col-md-10 col-md-offset-1">
                 <div class="box box-primary">
                   <div class="box-header with-border">
-                    <h2 class="box-title">Indice - <?php echo $modulo_enc ?></h2>
+                    <h2 class="box-title">Indice - <?php echo $modulo_enc ?> - <?php echo $estudio ?></h2>
                     <div class="box-tools pull-right">
                       <div class="has-feedback">
                         <div class="btn-group">

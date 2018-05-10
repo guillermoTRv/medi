@@ -9,6 +9,9 @@
 		if ($get_act == 'edicion_subapartados') {
 			include("panel/edicion_subapartados.php");
 		}
+		if ($get_act == "material_modulo") {
+			include("panel/vista_material_modulo.php");
+		}
 	}
 
 ?>

@@ -111,3 +111,22 @@ CREATE TABLE rel_clinica_sistemas(
 	primary key(id_relacion)
 )ENGINE=MyISAM DEFAULT CHARSET=latin1; 
 
+CREATE TABLE material_subapartados(
+	id_material_sub INT NOT NULL AUTO_INCREMENT,
+	id_subapartado INT NOT NULL,
+	interrogantes LONGTEXT NOT NULL,
+	reactivos LONGTEXT NOT NULL,
+	casos_clinicos_xt LONGTEXT NOT NULL,
+	casos_clinicos_img LONGTEXT NOT NULL,
+	bibliografia LONGTEXT NOT NULL,
+	notas_clinicas LONGTEXT NOT NULL,
+	notas_trabajo LONGTEXT NOT NULL,
+
+)ENGINE=MyISAM DEFAULT CHARSET=latin1; 
+
+CREATE TABLE material_modulo(
+	id_materia_mod INT NOT NULL AUTO_INCREMENT,
+	id_modulo INT NOT NULL,
+	texto LONGTEXT NOT NULL,
+	primary key(id_materia_mod)
+)ENGINE=MyISAM DEFAULT CHARSET=latin1; 

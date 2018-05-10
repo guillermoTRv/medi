@@ -10,7 +10,7 @@
 	?>
 		<div class="alert alert-info alert-dismissible" style="margin-top:10px;margin-bottom:-10px">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            Datos registrada exitosamente
+            Datos registrados exitosamente
         </div>
 	<?php
 ?>

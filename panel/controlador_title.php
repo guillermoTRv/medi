@@ -8,6 +8,9 @@
 			if ($get_act == "edicion_subapartados") {
 				echo " - Edicion Supartados";
 			}
+			if ($get_act == "material_modulo") {
+				echo " - Material del modulo";
+			}
 		}
 	?>
 	

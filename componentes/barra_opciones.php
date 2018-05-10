@@ -44,6 +44,11 @@
                           <a style="color:black" href="<?php echo $ruta_mas ?>&act=edicion_subapartados">Edicion Subapartados</a>
                         </p>
                     </center>
+                    <center>
+                        <p>
+                          <a style="color:black" href="<?php echo $ruta_mas ?>&act=material_modulo">Material Modulo</a>
+                        </p>
+                    </center>
                     <br><!--
                     <center><p>Realizar evaluacion</p></center><br>
                     <center><p>Notas(Biblio - General)</p></center><br>
