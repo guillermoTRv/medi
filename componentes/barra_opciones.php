@@ -28,7 +28,7 @@
                         <p>
                           <a style="color:black" href="">Subir un Contenido</a>
                         </p>
-                    </center>
+                    </center><!--
                     <center>
                         <p>
                           <a style="color:black" target="_blank" href="clinica.php?modulo=<?php echo $getvar ?>">Clinica del <?php echo $nombre_sistema ?></a>
@@ -38,7 +38,7 @@
                         <p>
                           <a style="color:black" target="_blank" href="farmacologia.php?modulo=<?php echo $getvar ?>">Farmacologia del <?php echo $nombre_sistema ?></a>
                         </p>
-                    </center>
+                    </center>-->
                     <center>
                         <p>
                           <a style="color:black" href="<?php echo $ruta_mas ?>&act=edicion_subapartados">Edicion Subapartados</a>
@@ -61,7 +61,7 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                           <?php 
-                            $consulta = mysqli_query($q_sec,"SELECT * FROM apartados WHERE id_modulo = '$id_modulo' order by posicion asc");
+                            $consulta = mysqli_query($q_sec,"SELECT * FROM apartados WHERE id_modulo = '$id_modulo' and tipo = '$tipo' order by posicion asc");
                             while ($array =  mysqli_fetch_array($consulta)) {
                               $id_apartado_mod = $array["id_apartado"];
                               $apartado = $array["apartado"];

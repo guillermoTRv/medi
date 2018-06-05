@@ -1,6 +1,6 @@
 <div class="box-body">
      
-     <h3>Panel de Control - Anatofisiologia</h3>
+     <h3>Panel de Control</h3>
      
      <br><br>
 </div>

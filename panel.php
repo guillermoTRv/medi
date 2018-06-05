@@ -18,6 +18,7 @@
   $consulta = consulta_array("SELECT * FROM apartados WHERE id_modulo = '$id_modulo' and id_apartado = '$get_id_apartado'");
   $enc_apartado = $consulta["apartado"];
 
+  $tipo = sanitizar_get("tipo");
   $get_act = sanitizar_get("act");
 
 ?>

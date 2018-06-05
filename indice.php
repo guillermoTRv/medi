@@ -36,18 +36,18 @@
                         
                       </div>
                     </div>
-
                   </div>
                   <div class="box-body">
-                    <a href="clinica.php?modulo=<?php echo $getvar ?>">Aspectos Clinicos</a> &nbsp;&nbsp;&nbsp; 
-                    <a href="farmacologia.php?modulo=<?php echo $getvar ?>">Farmacoterapia</a> &nbsp;&nbsp;&nbsp; 
+                    <a href="" class="anatofisiologia">Aspectos Clinicos</a> &nbsp;&nbsp;&nbsp;
+                    <a href="" class="clinica">Aspectos Clinicos</a> &nbsp;&nbsp;&nbsp; 
+                    <a href="" class="farmacologia">Farmacoterapia</a> &nbsp;&nbsp;&nbsp; 
                     <a href="">Casos Clinicos</a> &nbsp;&nbsp;&nbsp; 
                     <a href="">Medipracticas</a> &nbsp;&nbsp;&nbsp; 
                     <a href="">M.Complementarios</a> &nbsp;&nbsp;&nbsp; 
                     <a href="">Subir un contenido</a>
                   </div>
                   <div class="box-body">
-                    <table class="table table-condensed table-striped">
+                    <table class="table table-condensed table-striped tabla_anatofisiologia">
                       <thead>
                         <tr>
                           <th>Apartado</th>
@@ -58,11 +58,93 @@
                       </thead>
                       <tbody>
                         <?php  
-                          $consulta = mysqli_query($q_sec,"SELECT id_apartado,apartado,posicion FROM apartados WHERE id_modulo = '$id_modulo_get' order by posicion asc");
+                          $consulta = mysqli_query($q_sec,"SELECT id_apartado,apartado,posicion FROM apartados WHERE id_modulo = '$id_modulo_get' and tipo='anatofisiologia' order by posicion asc");
                           while ($array = mysqli_fetch_array($consulta)) {
                             $id_apartado = $array["id_apartado"];
                             $apartado = $array["apartado"];
-                            $ruta = "panel.php?modulo=$getvar&apartado=$id_apartado";
+                            $ruta = "panel.php?modulo=$getvar&tipo=anatofisiologia&apartado=$id_apartado";
+                            $posicion = $array["posicion"];
+                            ?> 
+                              <tr style="padding-top:-10px">
+                                <td><a style="color:black" href="<?php echo $ruta ?>"><?php echo $apartado ?></a></td>
+                                <td>
+                                  <a class="editar" href="" style="color:black" data-ide="<?php echo $id_apartado ?>" data-apartado='<?php echo $apartado ?>' href="" data-toggle="modal" data-target="#myModalEditar">
+                                    <i class="fa fa-edit"></i>
+                                  </a>
+                                  <a class="eliminar" href="" style="color:black" data-ide="<?php echo $id_apartado ?>" data-apartado='<?php echo $apartado ?>' href="" data-toggle="modal" data-target="#myModalEliminar">
+                                    <i class="fa fa-times-circle"></i>
+                                  </a>
+                                </td>
+                                <td>
+                                  <center><i class="fa fa-star-o"></i></center>
+                                </td>
+                                <td>
+                                  <input type="text" style="height:20px;width: 30px;text-align: center;" class="input_posicion" data="<?php echo $id_apartado ?>" value="<?php echo $posicion ?>">
+                                </td>
+                              </tr> 
+                            <?php
+                          }
+
+                        ?>
+                      </tbody>
+                    </table>
+                    <table class="table table-condensed table-striped tabla_clinica" style="display: none"> 
+                      <thead>
+                        <tr>
+                          <th>Apartado</th>
+                          <th>Acciones</th>
+                          <th><center>Evaluacion</center></th>
+                          <th>Posicion</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php  
+                          $consulta = mysqli_query($q_sec,"SELECT id_apartado,apartado,posicion FROM apartados WHERE id_modulo = '$id_modulo_get' and tipo='clinica' order by posicion asc");
+                          while ($array = mysqli_fetch_array($consulta)) {
+                            $id_apartado = $array["id_apartado"];
+                            $apartado = $array["apartado"];
+                            $ruta = "panel.php?modulo=$getvar&tipo=clinica&apartado=$id_apartado";
+                            $posicion = $array["posicion"];
+                            ?> 
+                              <tr style="padding-top:-10px">
+                                <td><a style="color:black" href="<?php echo $ruta ?>"><?php echo $apartado ?></a></td>
+                                <td>
+                                  <a class="editar" href="" style="color:black" data-ide="<?php echo $id_apartado ?>" data-apartado='<?php echo $apartado ?>' href="" data-toggle="modal" data-target="#myModalEditar">
+                                    <i class="fa fa-edit"></i>
+                                  </a>
+                                  <a class="eliminar" href="" style="color:black" data-ide="<?php echo $id_apartado ?>" data-apartado='<?php echo $apartado ?>' href="" data-toggle="modal" data-target="#myModalEliminar">
+                                    <i class="fa fa-times-circle"></i>
+                                  </a>
+                                </td>
+                                <td>
+                                  <center><i class="fa fa-star-o"></i></center>
+                                </td>
+                                <td>
+                                  <input type="text" style="height:20px;width: 30px;text-align: center;" class="input_posicion" data="<?php echo $id_apartado ?>" value="<?php echo $posicion ?>">
+                                </td>
+                              </tr> 
+                            <?php
+                          }
+
+                        ?>
+                      </tbody>
+                    </table>
+                    <table class="table table-condensed table-striped tabla_farmacologia" style="display: none"> 
+                      <thead>
+                        <tr>
+                          <th>Apartado</th>
+                          <th>Acciones</th>
+                          <th><center>Evaluacion</center></th>
+                          <th>Posicion</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php  
+                          $consulta = mysqli_query($q_sec,"SELECT id_apartado,apartado,posicion FROM apartados WHERE id_modulo = '$id_modulo_get' and tipo='farmacologia' order by posicion asc");
+                          while ($array = mysqli_fetch_array($consulta)) {
+                            $id_apartado = $array["id_apartado"];
+                            $apartado = $array["apartado"];
+                            $ruta = "panel.php?modulo=$getvar&tipo=farmacologia&&apartado=$id_apartado";
                             $posicion = $array["posicion"];
                             ?> 
                               <tr style="padding-top:-10px">
@@ -110,6 +192,12 @@
                       <div class="form-group">
                         <label>Nombre del apartado</label>
                         <input type="text" class="form-control" id="apartado" name="apartado">
+                        <select class ="form-control" style="margin-top:10px;" name="tipo"> 
+                          <option value="">--</option>                        
+                          <option value="anatofisiologia">Anatofisiologia</option>
+                          <option value="clinica">Clinica</option>
+                          <option value="farmacologia">Farmacologia</option>
+                        </select>
                         <input type="hidden" name="id_modulo" value="<?php echo $id_modulo_get ?>" >
                         <input type="hidden" value="<?php echo $getvar ?>" class="getvar_form">
                       </div>
@@ -248,6 +336,24 @@
           }
       });
       return false;
+    })
+    $(document).on('click','.clinica',function(){
+      event.preventDefault()
+      $(".tabla_anatofisiologia").hide();
+      $(".tabla_farmacologia").hide();
+      $(".tabla_clinica").show()
+    })
+    $(document).on('click','.anatofisiologia',function(){
+      event.preventDefault()
+      $(".tabla_clinica").hide();
+      $(".tabla_farmacologia").hide();
+      $(".tabla_anatofisiologia").show()
+    })
+    $(document).on('click','.farmacologia',function(){
+      event.preventDefault()
+      $(".tabla_anatofisiologia").hide();
+      $(".tabla_clinica").hide();
+      $(".tabla_farmacologia").show()
     })
 </script>
 
